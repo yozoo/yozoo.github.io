@@ -1215,6 +1215,7 @@ pre .javascript .function {
   border-bottom-color: #222;
 }
 .menu .menu-item .fa {
+  display: none !important;
   margin-right: 5px;
 }
 .use-motion .menu-item {
