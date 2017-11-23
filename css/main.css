@@ -1097,7 +1097,7 @@ pre .javascript .function {
 }
 .headband {
   height: 3px;
-  background: #0185D0 !important;
+  background: #222;
 }
 .site-meta {
   margin: 0;
@@ -1105,7 +1105,6 @@ pre .javascript .function {
 }
 @media (max-width: 767px) {
   .site-meta {
-    height: 30px !important;
     text-align: center;
   }
 }
@@ -1458,12 +1457,11 @@ pre .javascript .function {
   text-align: center;
   word-break: break-word;
   font-weight: 400;
-  color: #0185D0 !important;
 }
 .posts-expand .post-title-link {
   display: inline-block;
   position: relative;
-  color: #0185D0 !important;
+  color: #555;
   border-bottom: none;
   line-height: 1.2;
   vertical-align: top;
@@ -1517,7 +1515,6 @@ pre .javascript .function {
   margin-top: 2px;
 }
 .post-meta-divider {
-  display: none !important;
   margin: 0 0.5em;
 }
 .post-meta-item-icon {
@@ -1860,7 +1857,6 @@ pre .javascript .function {
 }
 .site-author-image {
   display: block;
-  border-radius: 50% !important;
   margin: 0 auto;
   padding: 2px;
   max-width: 120px;
@@ -1947,7 +1943,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #52558b;
+  background: #47bd6b;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2082,7 +2078,7 @@ pre .javascript .function {
 }
 .powered-by,
 .theme-info {
-  display: none !important;
+  display: inline-block;
 }
 .cc-license {
   margin-top: 10px;
@@ -2751,7 +2747,6 @@ pre .javascript .function {
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .header-inner {
-    height: 70px !important;
     position: relative;
     width: auto;
     border-radius: initial;
@@ -2878,7 +2873,7 @@ pre .javascript .function {
 .site-meta {
   padding: 20px 0;
   color: #fff;
-  background: #0185D0 !important;
+  background: #222;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .site-meta {
@@ -2956,7 +2951,7 @@ pre .javascript .function {
 }
 .site-nav-toggle {
   left: 20px;
-  top: 35px !important;
+  top: 50%;
   -webkit-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
