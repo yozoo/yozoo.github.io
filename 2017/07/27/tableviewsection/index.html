@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS,开发问题," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="yozoo的博客">
-<meta property="og:url" content="http://yozoo.com.cn/archives/2015/index.html">
+<meta name="description" content="作者: iOS_OneByte iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下： - (CGFloat)tableView:(UITableView *)tableView heightForHeader">
+<meta name="keywords" content="iOS,开发问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 11中隐藏section头尾的实现">
+<meta property="og:url" content="http://yozoo.com.cn/2017/07/27/tableviewsection/index.html">
 <meta property="og:site_name" content="yozoo的博客">
+<meta property="og:description" content="作者: iOS_OneByte iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下： - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {     retur">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-23T07:01:37.982Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yozoo的博客">
+<meta name="twitter:title" content="iOS 11中隐藏section头尾的实现">
+<meta name="twitter:description" content="作者: iOS_OneByte iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下： - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {     retur">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yozoo.com.cn/archives/2015/"/>
+  <link rel="canonical" href="http://yozoo.com.cn/2017/07/27/tableviewsection/"/>
 
 
 
 
 
-  <title>归档 | yozoo的博客</title>
+  <title>iOS 11中隐藏section头尾的实现 | yozoo的博客</title>
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,189 +249,226 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yozoo.com.cn/2017/07/27/tableviewsection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yozoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/handPic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yozoo的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">iOS 11中隐藏section头尾的实现</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-27T19:11:00+08:00">
+                2017-07-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 8 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2015">2015</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/14/libswiftCore/" itemprop="url">
-              
-                <span itemprop="name">Xcode libswiftCore 报错处理方法</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-14T23:52:54+08:00"
-              content="2015-11-14" >
-          11-14
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/15/UIViewPush/" itemprop="url">
-              
-                <span itemprop="name">UIView跳转到UIViewController</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-10-15T16:53:28+08:00"
-              content="2015-10-15" >
-          10-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <p>作者: iOS_OneByte</p>
+<p>iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下：</p>
+<pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1f;
+}
 
-        
-        
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1f;
+}
+</code></pre><p>如果只实现这2段代码的话，在 iOS 11 之前是不会出现问题的，但 iOS 11 之后需要同时实现如下：</p>
+<pre><code>- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return nil;
+}
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2015/08/12/win10/" itemprop="url">
-              
-                <span itemprop="name">Windows 10滑动关机技巧</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-08-12T20:42:58+08:00"
-              content="2015-08-12" >
-          08-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    return nil;
+}
+</code></pre><p>Base SDK 路径设置： Xcode &lt; Build Settings &lt; Base SDK</p>
+<p>Base SDK：指得是当前编译应用的和构建 .ipa 的 SDK 的版本，并且手机的 SDK 版本是向前兼容。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2015/07/27/xcode/" itemprop="url">
-              
-                <span itemprop="name">OS X 10.11中Xcode找不到模拟器的解决方法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-07-27T11:45:22+08:00"
-              content="2015-07-27" >
-          07-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>打赏支持一下呗！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="yozoo 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="yozoo 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/开发问题/" rel="tag"># 开发问题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/07/InjectionUser/" rel="next" title="Injection代码注入">
+                <i class="fa fa-chevron-left"></i> Injection代码注入
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/02/framework/" rel="prev" title="iOS静态库、动态库的区别">
+                iOS静态库、动态库的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2015/page/2/">2</a><a class="extend next" rel="next" href="/archives/2015/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -434,6 +476,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -701,6 +747,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
