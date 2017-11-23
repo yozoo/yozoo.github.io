@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="作者: iOS_OneByte iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下： - (CGFloat)tableView:(UITableView *)tableView heightForHeader">
+<meta name="description" content="作者: iOS_OneByte iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下：">
 <meta name="keywords" content="iOS,开发问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 11中隐藏section头尾的实现">
 <meta property="og:url" content="http://yozoo.com.cn/2017/07/27/tableviewsection/index.html">
 <meta property="og:site_name" content="yozoo的博客">
-<meta property="og:description" content="作者: iOS_OneByte iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下： - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {     retur">
+<meta property="og:description" content="作者: iOS_OneByte iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-23T07:01:37.982Z">
+<meta property="og:updated_time" content="2017-11-23T07:32:41.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 11中隐藏section头尾的实现">
-<meta name="twitter:description" content="作者: iOS_OneByte iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下： - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {     retur">
+<meta name="twitter:description" content="作者: iOS_OneByte iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下：">
 
 
 
@@ -354,6 +354,7 @@
       
         <p>作者: iOS_OneByte</p>
 <p>iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下：</p>
+<a id="more"></a>
 <pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 0.1f;

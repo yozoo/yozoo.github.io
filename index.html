@@ -499,32 +499,15 @@
 
       
         
-          
-            <p>作者: iOS_OneByte</p>
+          <p>作者: iOS_OneByte</p>
 <p>iOS 中 UITableView 中有一种比较常用的样式 UITableViewStyleGrouped。有时我们要隐去 section 头尾的话，经常实现如下：</p>
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 0.1f;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.1f;
-}
-</code></pre><p>如果只实现这2段代码的话，在 iOS 11 之前是不会出现问题的，但 iOS 11 之后需要同时实现如下：</p>
-<pre><code>- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    return nil;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    return nil;
-}
-</code></pre><p>Base SDK 路径设置： Xcode &lt; Build Settings &lt; Base SDK</p>
-<p>Base SDK：指得是当前编译应用的和构建 .ipa 的 SDK 的版本，并且手机的 SDK 版本是向前兼容。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/27/tableviewsection/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -663,18 +646,14 @@
 
       
         
-          
-            <p>Injection是johnno开发的一个Xcode插件，允许我们将代码实现更快注入到模拟器运行的程序或macOS程序。原先可以通过Alcatraz安装到Xcode中，不过现在是独立的App了。可以在<a href="http://johnholdsworth.com/Injection.app.zip" target="_blank" rel="noopener">这里</a>下载安装。启动后会出现在屏幕顶部的工具栏中，如下图所示。</p>
-<p><img src="https://github.com/southpeak/iOS-tech-set/blob/master/images/2017/01/10-1-1.png?raw=true" alt=""></p>
-<p>要检测是否有效，可以在某个类里面添加<strong>injected</strong>方法，然后打个断点。在代码修改后保存，然后注入，如果进入这个断点，则说明安装成功，同时控制器会有相应信息输出，如下图所示。</p>
-<p><img src="https://github.com/southpeak/iOS-tech-set/blob/master/images/2017/01/10-1-2.png?raw=true" alt=""></p>
-<p><strong>Injection</strong>使用<strong>AppleScript</strong>来和Xcode进行通信，以确定当前的文件与工程，然后将代码注入到模拟器，再加载新代码，并将新代码替换原来的代码。其效果如下图所示。</p>
-<p><img src="https://github.com/southpeak/iOS-tech-set/blob/master/images/2017/01/10-1-3.gif?raw=true" alt=""></p>
-<p><strong>Injection</strong>程序还包含一个<strong>Xprobe</strong>浏览器，用于查看程序的内存。可以选择图1中的Load Xprobe菜单项，弹出的窗口中显示了当前时间点的对象实例，我们可以在这做一些有意思的事情，如下图所示。</p>
-<p><img src="https://github.com/southpeak/iOS-tech-set/blob/master/images/2017/01/10-1-4.png?raw=true" alt=""></p>
-<p><a href="https://github.com/johnno1962/injectionforxcode" target="_blank" rel="noopener">Injection工程源码</a><br><a href="https://johntmcintosh.com/blog/2016/10/03/code-injection-ios" target="_blank" rel="noopener">文档</a></p>
-
-          
+          <p>Injection是johnno开发的一个Xcode插件，允许我们将代码实现更快注入到模拟器运行的程序或macOS程序。原先可以通过Alcatraz安装到Xcode中，不过现在是独立的App了。可以在<a href="http://johnholdsworth.com/Injection.app.zip" target="_blank" rel="noopener">这里</a>下载安装。启动后会出现在屏幕顶部的工具栏中，如下图所示。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/07/InjectionUser/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
