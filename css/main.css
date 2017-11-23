@@ -2956,7 +2956,7 @@ pre .javascript .function {
 }
 .site-nav-toggle {
   left: 20px;
-  top: 35%;
+  top: 35px !important;
   -webkit-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
