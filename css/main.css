@@ -1516,6 +1516,7 @@ pre .javascript .function {
   margin-top: 2px;
 }
 .post-meta-divider {
+  display: none !important;
   margin: 0 0.5em;
 }
 .post-meta-item-icon {
@@ -2080,7 +2081,7 @@ pre .javascript .function {
 }
 .powered-by,
 .theme-info {
-  display: inline-block;
+  display: none !important;
 }
 .cc-license {
   margin-top: 10px;
@@ -2749,6 +2750,7 @@ pre .javascript .function {
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .header-inner {
+    height: 70px !important;
     position: relative;
     width: auto;
     border-radius: initial;
@@ -2953,7 +2955,7 @@ pre .javascript .function {
 }
 .site-nav-toggle {
   left: 20px;
-  top: 50%;
+  top: 35%;
   -webkit-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
