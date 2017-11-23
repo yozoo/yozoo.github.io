@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="##一、什么是库？﻿ 库是共享程序代码的方式，一般分为静态库和动态库。﻿ ##二、静态库与动态库的区别？﻿ 静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿ 动态库：链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存。">
+<meta name="description" content="一、什么是库？﻿库是共享程序代码的方式，一般分为静态库和动态库。﻿ 二、静态库与动态库的区别？﻿静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿ 动态库：链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存。">
 <meta name="keywords" content="iOS,Xcode,开发问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS静态库、动态库的区别">
 <meta property="og:url" content="http://yozoo.com.cn/2017/11/02/framework/index.html">
 <meta property="og:site_name" content="yozoo的博客">
-<meta property="og:description" content="##一、什么是库？﻿ 库是共享程序代码的方式，一般分为静态库和动态库。﻿ ##二、静态库与动态库的区别？﻿ 静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿ 动态库：链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存。">
+<meta property="og:description" content="一、什么是库？﻿库是共享程序代码的方式，一般分为静态库和动态库。﻿ 二、静态库与动态库的区别？﻿静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿ 动态库：链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-23T02:48:08.632Z">
+<meta property="og:updated_time" content="2017-11-23T02:50:08.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS静态库、动态库的区别">
-<meta name="twitter:description" content="##一、什么是库？﻿ 库是共享程序代码的方式，一般分为静态库和动态库。﻿ ##二、静态库与动态库的区别？﻿ 静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿ 动态库：链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存。">
+<meta name="twitter:description" content="一、什么是库？﻿库是共享程序代码的方式，一般分为静态库和动态库。﻿ 二、静态库与动态库的区别？﻿静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿ 动态库：链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存。">
 
 
 
@@ -352,29 +352,21 @@
       
 
       
-        <p>##一、什么是库？﻿</p>
-<p>库是共享程序代码的方式，一般分为静态库和动态库。﻿</p>
-<p>##二、静态库与动态库的区别？﻿</p>
-<p>静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿</p>
+        <h2 id="一、什么是库？"><a href="#一、什么是库？" class="headerlink" title="一、什么是库？﻿"></a>一、什么是库？﻿</h2><p>库是共享程序代码的方式，一般分为静态库和动态库。﻿</p>
+<h2 id="二、静态库与动态库的区别？"><a href="#二、静态库与动态库的区别？" class="headerlink" title="二、静态库与动态库的区别？﻿"></a>二、静态库与动态库的区别？﻿</h2><p>静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿</p>
 <p>动态库：链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存。﻿<br><a id="more"></a></p>
-<p>##三、iOS里静态库形式？﻿</p>
-<p>.a和.framework﻿</p>
-<p>##四、iOS里动态库形式？﻿</p>
-<p>.dylib和.framework﻿</p>
-<p>##五、framework为什么既是静态库又是动态库？﻿</p>
-<p>系统的.framework是动态库，我们自己建立的.framework是静态库。﻿</p>
-<p>##六、a与.framework有什么区别？﻿</p>
-<p>.a是一个纯二进制文件，.framework中除了有二进制文件之外还有资源文件。﻿</p>
+<h2 id="三、iOS里静态库形式？"><a href="#三、iOS里静态库形式？" class="headerlink" title="三、iOS里静态库形式？﻿"></a>三、iOS里静态库形式？﻿</h2><p>.a和.framework﻿</p>
+<h2 id="四、iOS里动态库形式？"><a href="#四、iOS里动态库形式？" class="headerlink" title="四、iOS里动态库形式？﻿"></a>四、iOS里动态库形式？﻿</h2><p>.dylib和.framework﻿</p>
+<h2 id="五、framework为什么既是静态库又是动态库？"><a href="#五、framework为什么既是静态库又是动态库？" class="headerlink" title="五、framework为什么既是静态库又是动态库？﻿"></a>五、framework为什么既是静态库又是动态库？﻿</h2><p>系统的.framework是动态库，我们自己建立的.framework是静态库。﻿</p>
+<h2 id="六、a与-framework有什么区别？"><a href="#六、a与-framework有什么区别？" class="headerlink" title="六、a与.framework有什么区别？﻿"></a>六、a与.framework有什么区别？﻿</h2><p>.a是一个纯二进制文件，.framework中除了有二进制文件之外还有资源文件。﻿</p>
 <p>.a文件不能直接使用，至少要有.h文件配合，.framework文件可以直接使用。﻿</p>
 <p>.a + .h + sourceFile = .framework。﻿</p>
 <p>建议用.framework.﻿</p>
-<p>##七、为什么要使用静态库？﻿</p>
-<p>方便共享代码，便于合理使用。﻿</p>
+<h2 id="七、为什么要使用静态库？"><a href="#七、为什么要使用静态库？" class="headerlink" title="七、为什么要使用静态库？﻿"></a>七、为什么要使用静态库？﻿</h2><p>方便共享代码，便于合理使用。﻿</p>
 <p>实现iOS程序的模块化。可以把固定的业务模块化成静态库。﻿</p>
 <p>和别人分享你的代码库，但不想让别人看到你代码的实现。﻿</p>
 <p>开发第三方sdk的需要。﻿</p>
-<p>##八、制作静态库时的几点注意：﻿</p>
-<p>1 注意理解：无论是.a静态库还.framework静态库，我们需要的都是二进制文件+.h+其它资源文件的形式，不同的是，.a本身就是二进制文件，需要我们自己配上.h和其它文件才能使用，而.framework本身已经包含了.h和其它文件，可以直接使用。﻿</p>
+<h2 id="八、制作静态库时的几点注意："><a href="#八、制作静态库时的几点注意：" class="headerlink" title="八、制作静态库时的几点注意：﻿"></a>八、制作静态库时的几点注意：﻿</h2><p>1 注意理解：无论是.a静态库还.framework静态库，我们需要的都是二进制文件+.h+其它资源文件的形式，不同的是，.a本身就是二进制文件，需要我们自己配上.h和其它文件才能使用，而.framework本身已经包含了.h和其它文件，可以直接使用。﻿</p>
 <p>2 图片资源的处理：两种静态库，一般都是把图片文件单独的放在一个.bundle文件中，一般.bundle的名字和.a或.framework的名字相同。.bundle文件很好弄，新建一个文件夹，把它改名为.bundle就可以了，右键，显示包内容可以向其中添加图片资源。﻿</p>
 <p>3 category是我们实际开发项目中经常用到的，把category打成静态库是没有问题的，但是在用这个静态库的工程中，调用category中的方法时会有找不到该方法的运行时错误（selector not recognized），解决办法是：在使用静态库的工程中配置other linker flags的值为-ObjC。﻿</p>
 <p>4 如果一个静态库很复杂，需要暴露的.h比较多的话，就可以在静态库的内部创建一个.h文件（一般这个.h文件的名字和静态库的名字相同），然后把所有需要暴露出来的.h文件都集中放在这个.h文件中，而那些原本需要暴露的.h都不需要再暴露了，只需要把.h暴露出来就可以了。</p>
@@ -501,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -608,6 +609,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是库？"><span class="nav-number">1.</span> <span class="nav-text">一、什么是库？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、静态库与动态库的区别？"><span class="nav-number">2.</span> <span class="nav-text">二、静态库与动态库的区别？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、iOS里静态库形式？"><span class="nav-number">3.</span> <span class="nav-text">三、iOS里静态库形式？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、iOS里动态库形式？"><span class="nav-number">4.</span> <span class="nav-text">四、iOS里动态库形式？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、framework为什么既是静态库又是动态库？"><span class="nav-number">5.</span> <span class="nav-text">五、framework为什么既是静态库又是动态库？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、a与-framework有什么区别？"><span class="nav-number">6.</span> <span class="nav-text">六、a与.framework有什么区别？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、为什么要使用静态库？"><span class="nav-number">7.</span> <span class="nav-text">七、为什么要使用静态库？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、制作静态库时的几点注意："><span class="nav-number">8.</span> <span class="nav-text">八、制作静态库时的几点注意：﻿</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
