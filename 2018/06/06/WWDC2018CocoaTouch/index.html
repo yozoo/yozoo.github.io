@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="UIKit旧有功能的性能优化 滚动新增数据预获取功能 降低图片渲染不必要的内存开销 优化Auto Layout计算的时间复杂度  UIKit旧有功能的API调整 框架中旧的全局变量、常量以及函数被嵌套进对象，使得它们看上去更Swift 淘汰旧版本的编解码API，新增更安全的编解码API">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OS X 10.11中Xcode找不到模拟器的解决方法">
+<meta property="og:url" content="http://yozoo.com.cn/2018/06/06/WWDC2018CocoaTouch/index.html">
+<meta property="og:site_name" content="yozoo的博客">
+<meta property="og:description" content="UIKit旧有功能的性能优化 滚动新增数据预获取功能 降低图片渲染不必要的内存开销 优化Auto Layout计算的时间复杂度  UIKit旧有功能的API调整 框架中旧的全局变量、常量以及函数被嵌套进对象，使得它们看上去更Swift 淘汰旧版本的编解码API，新增更安全的编解码API">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dff9870e3851e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffa8831d2a34?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffac8a973a34?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffae714927eb?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163e00ec5fe20536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163e0160670433a0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0211c57ac483?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e023eda778536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e02ad27985226?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0307c454e4f1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e02ff52899e0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0318cb0a22f5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e03208f30b963?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:updated_time" content="2018-07-06T13:27:39.173Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OS X 10.11中Xcode找不到模拟器的解决方法">
+<meta name="twitter:description" content="UIKit旧有功能的性能优化 滚动新增数据预获取功能 降低图片渲染不必要的内存开销 优化Auto Layout计算的时间复杂度  UIKit旧有功能的API调整 框架中旧的全局变量、常量以及函数被嵌套进对象，使得它们看上去更Swift 淘汰旧版本的编解码API，新增更安全的编解码API">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dff9870e3851e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yozoo.com.cn/2018/06/06/WWDC2018CocoaTouch/"/>
+
+
+
+
+
+  <title>OS X 10.11中Xcode找不到模拟器的解决方法 | yozoo的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yozoo的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">an iOS developer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yozoo.com.cn/2018/06/06/WWDC2018CocoaTouch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yozoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/handPic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yozoo的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OS X 10.11中Xcode找不到模拟器的解决方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-06T00:01:31+08:00">
+                2018-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="UIKit旧有功能的性能优化"><a href="#UIKit旧有功能的性能优化" class="headerlink" title="UIKit旧有功能的性能优化"></a>UIKit旧有功能的性能优化</h4><ul>
+<li>滚动新增数据预获取功能</li>
+<li>降低图片渲染不必要的内存开销</li>
+<li>优化Auto Layout计算的时间复杂度</li>
+</ul>
+<h4 id="UIKit旧有功能的API调整"><a href="#UIKit旧有功能的API调整" class="headerlink" title="UIKit旧有功能的API调整"></a>UIKit旧有功能的API调整</h4><ul>
+<li>框架中旧的全局变量、常量以及函数被嵌套进对象，使得它们看上去更Swift</li>
+<li>淘汰旧版本的编解码API，新增更安全的编解码API</li>
+</ul>
+<a id="more"></a>
+<h4 id="UIKit的新功能"><a href="#UIKit的新功能" class="headerlink" title="UIKit的新功能"></a>UIKit的新功能</h4><ul>
+<li>Notification的交互、分组、设置</li>
+<li>Messages的动态贴纸、iPhone X下Home Bar的交互响应<br>密码的自动生成和填充</li>
+<li>Siri Shortcut</li>
+</ul>
+<h2 id="UIKit的性能提升"><a href="#UIKit的性能提升" class="headerlink" title="UIKit的性能提升"></a>UIKit的性能提升</h2><ul>
+<li>UIKit通过“数据预加载”和“CPU算力调整”来做了滚动优化，这两项优化对于UITableView和UICollectionView甚至你自己定制的UIScrollView都有效。</li>
+<li>UIKit针对图片渲染相关API的优化了内存开销</li>
+<li>UIKit优化了Auto Layout运算的开销</li>
+</ul>
+<h4 id="“数据预加载”的背后是一个这样的故事："><a href="#“数据预加载”的背后是一个这样的故事：" class="headerlink" title="“数据预加载”的背后是一个这样的故事："></a>“数据预加载”的背后是一个这样的故事：</h4><p>我们举UITabelView为例子，一次完整的Cell加载过程是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1、在UITableView的DataSource的- tableView:cellForRowAt:方法中，工程师将Cell实例从缓存队列中取出，或直接初始化一个新cell</span><br><span class="line">2、工程师将数据取出，然后赋值给Cell实例</span><br><span class="line">3、UIKit会调用layoutSubviews给cell的子view作布局</span><br><span class="line">4、UIKit将cell绘制出来并展示</span><br></pre></td></tr></table></figure>
+<p>只有一帧之内做完这4件事情，UITableView滚动的时候才不会卡。</p>
+<p>在以上4步中，第2步开销大小是取决于不同场合不同业务逻辑的。因为有的时候你用于展示这个Cell的数据可能已经预先整理过，直接拿来就可用，不会有什么大的开销。但有的时候你用于展示这个Cell的数据是来自于数据库、或者本地文件、或者其它地方的，那么就会多一个从其他地方取数据整理数据的过程，那么就会增加一笔额外开销，这一笔开销就很有可能导致掉帧卡顿。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dff9870e3851e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>如上图所示，在之前UIKit的实现中，预先取数据这个行为本身也是有的，而且也是异步的。但由于取数据的时机是跟加载Cell的时机是同时开始的，所以CPU又要预先取数据，也要加载、渲染Cell。这就导致了CPU在一帧的时间内同时做两件事，就有可能导致掉帧。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dffa8831d2a34?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>而这次的优化，就是把预先取数据的行为放在了Cell渲染完成之后。这样就可以在一帧刚开始的时候，将CPU从数据预加载的事务中解放出来，全力去做Cell相关的事情，这样就能够尽早将Cell渲染完交差。然后CPU再进行数据异步预加载的事情。<br>在这一轮优化中，UIKit针对数据预加载提供了新的Protocol。拿UITableView来说，就提供了<em>UITableViewDataSourcePrefetching</em>，这个Protocol中包含两个方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath])</span><br><span class="line">func tableView(_ tableView: UITableView,</span><br><span class="line">cancelPrefetchingForRowsAt: indexPaths [IndexPath])</span><br></pre></td></tr></table></figure>
+<p>实现这个protocol时，只有<em>prefetchRowsAt</em>这个方法是必须的。<em>cancelPrefetchingForRowsAt</em>这个会由系统调用，比如当你cell的数据是需要下载才能得到的，那么结合断点续传功能和这个protocol，你就能很优雅地处理cell数据加载的事情。</p>
+<h4 id="“算力调整”的背后是这样的故事："><a href="#“算力调整”的背后是这样的故事：" class="headerlink" title="“算力调整”的背后是这样的故事："></a>“算力调整”的背后是这样的故事：</h4><p>苹果工程师在不断地做性能检测的时候，又发现了一个这样的情况：如果用户之前在看一些加载开销比较小的Cell，然后用户突然滚动到加载开销比较大的Cell时，UIKit依旧会出现掉帧的卡顿现象。而且此时系统本身也没什么负载，也没有什么开销大的后台任务在运行，因此就排除了CPU负载过大导致卡顿这一可能。</p>
+<p>那为什么CPU没什么负载，却依旧出现了卡顿呢？他们研究了一轮，发现原来这是因为CPU性能调度逻辑导致的，这段过程是这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、当用户之前一直在看加载开销小的Cell的时候，其本身需要的CPU性能并不高，那么此时CPU性能调度管理器就更加倾向于保持低性能运行，这样能够省电。</span><br><span class="line">2、当用户突然划到一个加载开销大的Cell的时候，CPU性能调度管理器也并不知道你这时候要加载一个开销那么大的Cell，于是它就还是在低性能的状态下去加载这个开销比较大的Cell。</span><br><span class="line">3、当CPU性能调度器反应过来这个Cell原来需要那么大的开销的时候，它就会切到高性能去消化这个负载。不过往往这时候再提高CPU性能就已经晚了，就有很大几率会导致卡顿。</span><br></pre></td></tr></table></figure>
+<p>这个过程往往会发生在Feed流类似的应用中。比如你之前一直在看的Cell都是文字内容的，开销极小。突然你划到视频Cell了，这个cell开销很大，CPU性能调度管理器在Cell加载到一半了才去提高性能等级，那就很容易出现卡顿的情况了。</p>
+<p>找到原因之后，优化的事情就好做了。现在苹果工程师打通了整个流程，使得UIKit的信息能够传递到CPU性能调度管理器。当UIKit在加载下一个Cell的时候，如果发现这是一个加载开销比较大的Cell，UIKit就会去通知CPU性能调度器，告诉调度器赶紧提高性能。这样一来，因为CPU性能已经提前提上来了，那么系统就能最大可能避免掉帧卡顿的情况发生。</p>
+<p>也就是说，之前CPU的调度情况是这样：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dffac8a973a34?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>优化之后，CPU的调度就变成了这样：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dffae714927eb?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>因为UIKit预测到了下一个Cell开销比较大，所以提前跟CPU性能调度器打了招呼，于是CPU的性能就立刻提上来了。相比之前CPU性能慢慢往上提的情况，就更不容易出现卡顿。</p>
+<p>####图片渲染相关API的内存优化<br>演讲者先说了一遍内存是如何影响UI性能的，这一段其实可以说得很简单：当系统剩余内存不多，而此时你的应用又需要很大的一片内存时，系统就要通过回收内存或强行关闭后台App的方式来为你的应用腾出内存来。系统为你腾内存这一操作的开销导致了你的App此时需要更长时间的等待，进而影响了你App的UI性能。</p>
+<p>为了缓解这个问题，iOS 12引入了<em>Automatic Backing Store</em>这项技术。这项技术主要是针对画图类的App起作用，对于其他的场合无效。本质上的实现就是通过在保证色彩不失真的基础上，使用更少的数据量，去表达一个像素的颜色。</p>
+<p>如下图所示，在64位色的情况下，左右两张图片的数据量是一样的，都是2.2M左右。虽然右边只有黑白两色，但是依旧使用了64位去存储每个像素的颜色色值。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163e00ec5fe20536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>所以呢，苹果就想了个办法，说既然右边这张图片只有黑白两色，那我干嘛还要用64位去表达一个颜色呢？8位就足够了啊。于是，右边这个图每像素的颜色用8位来表达之后，就变成只有275K了，于是内存就省了：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163e0160670433a0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>那为什么不直接用1位呢？反正也就黑白两色。对不起，因为色表标准最小就是8位的，如果你用了1位色，屏幕是不支持这套标准的。<em>Automatic Backing Store</em>对左边这幅图无效，因为它不是图片压缩算法，它只是在你用画笔画完图片并且渲染的时候，把原来需要64位去存储的单个像素的色值，改成用8位去存储而已，这个过程是有可能产生一定的色彩失真的。所以<em>Automatic Backing Store</em>只适合画图类应用，在以下3个场景中，它是默认开启的：</p>
+<ul>
+<li>UIView.draw()</li>
+<li>UIGraphicsImageRenderer</li>
+<li>UIGraphicsImageRenderer.Range</li>
+</ul>
+<p>有关<em>Automatic Backing Store</em>的内容，还可以看<a href="https://developer.apple.com/videos/play/wwdc2018/219/" target="_blank" rel="noopener">Session 219 - Image and Graphics Best Practices</a></p>
+<h4 id="Auto-Layout计算的优化"><a href="#Auto-Layout计算的优化" class="headerlink" title="Auto Layout计算的优化"></a>Auto Layout计算的优化</h4><p>iOS 12中，Auto Layout做了非常大的优化。</p>
+<p>当一个View包含了N个布局上互相独立的子View时，Auto Layout的计算耗时是随着子view数量的增加而线性增加的。因为苹果工程师们的努力，iOS 12的计算耗时比iOS 11少了一些，如下图：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e0211c57ac483?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>当一个View包含了N个子View，且这N个子View的布局存在依赖的情况时。iOS 11下Auto Layout的计算耗时是随着子View的数量增加而指数性增长的。在iOS 12优化之后，计算耗时呈线性增长，这可以说是一个比较大的优化了。（但我一直是认为其实这本身就应该是一个线性时间内可以完成的任务，iOS 11的时候工程师怎么把它实现成指数性增长的了？这个工程师该杀），如下图：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e023eda778536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>当N个View相互嵌套时，iOS 11下Auto Layout的计算耗时是随着子View的数量增加而指数性增长的。在iOS 12优化之后，计算耗时呈线性增长。我还是觉得这本身也是一个线性时间内可以完成的任务，当初在iOS 11把它实现成指数性增长任务的工程师该杀。如下图：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e02ad27985226?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>更多的内容可以看<a href="https://developer.apple.com/videos/play/wwdc2018/220/" target="_blank" rel="noopener">Session 220 - High Performance Auto Layout</a></p>
+<h2 id="UIKit旧有API的修改"><a href="#UIKit旧有API的修改" class="headerlink" title="UIKit旧有API的修改"></a>UIKit旧有API的修改</h2><ul>
+<li>更Swift的UIKit</li>
+<li>更安全的编解码</li>
+</ul>
+<h4 id="更Swift的UIKit"><a href="#更Swift的UIKit" class="headerlink" title="更Swift的UIKit"></a>更Swift的UIKit</h4><p>在Swift 4.2中，有些全局的Type被挪进了对象中，包括但不限于：<br><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e0307c454e4f1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e02ff52899e0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>还有些全局常量也被挪进了有关对象中，包括但不限于：<br><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e0318cb0a22f5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e03208f30b963?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>这么一来，UIKit看起来确实更Swift了，只是升级4.2的时候，又要面对一堆编译错误了。</p>
+<h4 id="更安全的编解码"><a href="#更安全的编解码" class="headerlink" title="更安全的编解码"></a>更安全的编解码</h4><p>演讲者只是在这里提了一句，iOS 12提供了更安全的编解码API，旧的API将会被淘汰。具体是什么情况要去看<a href="https://developer.apple.com/videos/play/wwdc2018/222/" target="_blank" rel="noopener">Session 222 - Data You Can Trust</a></p>
+<h2 id="UIKit-新功能"><a href="#UIKit-新功能" class="headerlink" title="UIKit 新功能"></a>UIKit 新功能</h2><ul>
+<li>Notification</li>
+<li>Messages</li>
+<li>Automatic Passwords and Security Code AutoFill</li>
+<li>Siri Shortcuts</li>
+</ul>
+<h4 id="Notification-API修改"><a href="#Notification-API修改" class="headerlink" title="Notification API修改"></a>Notification API修改</h4><ul>
+<li>Interaction</li>
+</ul>
+<p>** iOS 12加强了针对Notification的交互，大部分界面开发者可以自由定制了。</p>
+<ul>
+<li>Grouping</li>
+</ul>
+<p>** iOS 12会将众多Notification分组并展示，并且提供了API让开发者在一定程度上决定如何进行分组。</p>
+<ul>
+<li>Settings</li>
+</ul>
+<p>** iOS 12向开发者提供了接口，使得开发者能够让用户直接开启或关闭通知。</p>
+<p>以上三点演讲者只是一带而过，更多内容请看：<br><a href="https://developer.apple.com/videos/play/wwdc2018/710/" target="_blank" rel="noopener">Session 710 - What’s New in User Notifications</a><br><a href="https://developer.apple.com/videos/play/wwdc2018/711/" target="_blank" rel="noopener">Session 711 - Using Grouped Notifications</a></p>
+<h4 id="Messages"><a href="#Messages" class="headerlink" title="Messages"></a>Messages</h4><p>iOS 12中，你可以将Message的人脸识别贴纸带入camera中。如果你需要针对这些做更多的定制的话，你需要在Info.Plist中添加以下内容，<em>MSMessagesAppPresentationContextMedia</em>其实就是指的camera：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;MSSupportedPresentationContexts&lt;/key&gt;</span><br><span class="line">&lt;array&gt;</span><br><span class="line">    &lt;string&gt;MSMessagesAppPresentationContextMessages&lt;/string&gt;</span><br><span class="line">    &lt;string&gt;MSMessagesAppPresentationContextMedia&lt;/string&gt;</span><br><span class="line">&lt;/array&gt;</span><br></pre></td></tr></table></figure></p>
+<p>而且你也可以根据以下API查看一条Message是不是动态的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var presentationContext: MSMessagesAppPresentationContext</span><br><span class="line"></span><br><span class="line">enum MSMessagesAppPresentationContext : UInt &#123;</span><br><span class="line"> case messages</span><br><span class="line"> case media</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>iOS 12也给Message添加了新的交互操作：之前在底部bar处水平滑动，系统会自动切换App。现在你的Message App可以接收这个事件，可以选择覆盖系统切换App的行为，或者执行你自己的行为。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>打赏支持一下呗！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="yozoo 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="yozoo 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/02/framework/" rel="next" title="iOS静态库、动态库的区别">
+                <i class="fa fa-chevron-left"></i> iOS静态库、动态库的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/image/handPic.png"
+                alt="yozoo" />
+            
+              <p class="site-author-name" itemprop="name">yozoo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yozoo" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/zouyonghang" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/lg20091240" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jianshu.com/" title="简书" target="_blank">简书</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#UIKit旧有功能的性能优化"><span class="nav-number">1.</span> <span class="nav-text">UIKit旧有功能的性能优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UIKit旧有功能的API调整"><span class="nav-number">2.</span> <span class="nav-text">UIKit旧有功能的API调整</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UIKit的新功能"><span class="nav-number">3.</span> <span class="nav-text">UIKit的新功能</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIKit的性能提升"><span class="nav-number"></span> <span class="nav-text">UIKit的性能提升</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#“数据预加载”的背后是一个这样的故事："><span class="nav-number">1.</span> <span class="nav-text">“数据预加载”的背后是一个这样的故事：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“算力调整”的背后是这样的故事："><span class="nav-number">2.</span> <span class="nav-text">“算力调整”的背后是这样的故事：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Auto-Layout计算的优化"><span class="nav-number">3.</span> <span class="nav-text">Auto Layout计算的优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIKit旧有API的修改"><span class="nav-number"></span> <span class="nav-text">UIKit旧有API的修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更Swift的UIKit"><span class="nav-number">1.</span> <span class="nav-text">更Swift的UIKit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更安全的编解码"><span class="nav-number">2.</span> <span class="nav-text">更安全的编解码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIKit-新功能"><span class="nav-number"></span> <span class="nav-text">UIKit 新功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Notification-API修改"><span class="nav-number">1.</span> <span class="nav-text">Notification API修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Messages"><span class="nav-number">2.</span> <span class="nav-text">Messages</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yozoo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
