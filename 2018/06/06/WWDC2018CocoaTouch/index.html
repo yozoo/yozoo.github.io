@@ -87,24 +87,24 @@
 <meta property="og:site_name" content="yozoo的博客">
 <meta property="og:description" content="UIKit旧有功能的性能优化 滚动新增数据预获取功能 降低图片渲染不必要的内存开销 优化Auto Layout计算的时间复杂度  UIKit旧有功能的API调整 框架中旧的全局变量、常量以及函数被嵌套进对象，使得它们看上去更Swift 淘汰旧版本的编解码API，新增更安全的编解码API">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dff9870e3851e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffa8831d2a34?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dff9870e3851e">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffa8831d2a34">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffac8a973a34?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffae714927eb?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163e00ec5fe20536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163e0160670433a0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0211c57ac483?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e023eda778536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e02ad27985226?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0307c454e4f1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e02ff52899e0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0318cb0a22f5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e03208f30b963?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2018-07-07T07:14:45.986Z">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e02ad27985226">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0307c454e4f1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e02ff52899e0a">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0318cb0a22f5">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e03208f30b963">
+<meta property="og:updated_time" content="2018-07-07T07:32:15.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WWDC 2018：Cocoa Touch新特性与改进">
 <meta name="twitter:description" content="UIKit旧有功能的性能优化 滚动新增数据预获取功能 降低图片渲染不必要的内存开销 优化Auto Layout计算的时间复杂度  UIKit旧有功能的API调整 框架中旧的全局变量、常量以及函数被嵌套进对象，使得它们看上去更Swift 淘汰旧版本的编解码API，新增更安全的编解码API">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dff9870e3851e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dff9870e3851e">
 
 
 
@@ -387,18 +387,22 @@
 <li>UIKit优化了Auto Layout运算的开销</li>
 </ul>
 <h4 id="“数据预加载”的背后是一个这样的故事："><a href="#“数据预加载”的背后是一个这样的故事：" class="headerlink" title="“数据预加载”的背后是一个这样的故事："></a>“数据预加载”的背后是一个这样的故事：</h4><p>我们举UITabelView为例子，一次完整的Cell加载过程是这样的：</p>
-<p>&gt;<br>1、在UITableView的DataSource的- tableView:cellForRowAt:方法中，工程师将Cell实例从缓存队列中取出，或直接初始化一个新cell<br>2、工程师将数据取出，然后赋值给Cell实例<br>3、UIKit会调用layoutSubviews给cell的子view作布局<br>4、UIKit将cell绘制出来并展示</p>
+<blockquote>
+<p>1、在UITableView的DataSource的- tableView:cellForRowAt:方法中，工程师将Cell实例从缓存队列中取出，或直接初始化一个新cell<br>2、工程师将数据取出，然后赋值给Cell实例<br>3、UIKit会调用layoutSubviews给cell的子view作布局<br>4、UIKit将cell绘制出来并展示</p>
+</blockquote>
 <p>只有一帧之内做完这4件事情，UITableView滚动的时候才不会卡。</p>
 <p>在以上4步中，第2步开销大小是取决于不同场合不同业务逻辑的。因为有的时候你用于展示这个Cell的数据可能已经预先整理过，直接拿来就可用，不会有什么大的开销。但有的时候你用于展示这个Cell的数据是来自于数据库、或者本地文件、或者其它地方的，那么就会多一个从其他地方取数据整理数据的过程，那么就会增加一笔额外开销，这一笔开销就很有可能导致掉帧卡顿。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dff9870e3851e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dff9870e3851e" alt=""></p>
 <p>如上图所示，在之前UIKit的实现中，预先取数据这个行为本身也是有的，而且也是异步的。但由于取数据的时机是跟加载Cell的时机是同时开始的，所以CPU又要预先取数据，也要加载、渲染Cell。这就导致了CPU在一帧的时间内同时做两件事，就有可能导致掉帧。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dffa8831d2a34?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dffa8831d2a34" alt=""></p>
 <p>而这次的优化，就是把预先取数据的行为放在了Cell渲染完成之后。这样就可以在一帧刚开始的时候，将CPU从数据预加载的事务中解放出来，全力去做Cell相关的事情，这样就能够尽早将Cell渲染完交差。然后CPU再进行数据异步预加载的事情。<br>在这一轮优化中，UIKit针对数据预加载提供了新的Protocol。拿UITableView来说，就提供了<strong>UITableViewDataSourcePrefetching</strong>，这个Protocol中包含两个方法：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath])</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView,</span></span></span><br><span class="line"><span class="function"><span class="params">cancelPrefetchingForRowsAt: indexPaths [IndexPath])</span></span></span><br></pre></td></tr></table></figure>
 <p>实现这个protocol时，只有<strong>prefetchRowsAt</strong>这个方法是必须的。<strong>cancelPrefetchingForRowsAt</strong>这个会由系统调用，比如当你cell的数据是需要下载才能得到的，那么结合断点续传功能和这个protocol，你就能很优雅地处理cell数据加载的事情。</p>
 <h4 id="“算力调整”的背后是这样的故事："><a href="#“算力调整”的背后是这样的故事：" class="headerlink" title="“算力调整”的背后是这样的故事："></a>“算力调整”的背后是这样的故事：</h4><p>苹果工程师在不断地做性能检测的时候，又发现了一个这样的情况：如果用户之前在看一些加载开销比较小的Cell，然后用户突然滚动到加载开销比较大的Cell时，UIKit依旧会出现掉帧的卡顿现象。而且此时系统本身也没什么负载，也没有什么开销大的后台任务在运行，因此就排除了CPU负载过大导致卡顿这一可能。</p>
 <p>那为什么CPU没什么负载，却依旧出现了卡顿呢？他们研究了一轮，发现原来这是因为CPU性能调度逻辑导致的，这段过程是这样：</p>
-<p>&gt;<br>1、当用户之前一直在看加载开销小的Cell的时候，其本身需要的CPU性能并不高，那么此时CPU性能调度管理器就更加倾向于保持低性能运行，这样能够省电。<br>2、当用户突然划到一个加载开销大的Cell的时候，CPU性能调度管理器也并不知道你这时候要加载一个开销那么大的Cell，于是它就还是在低性能的状态下去加载这个开销比较大的Cell。<br>3、当CPU性能调度器反应过来这个Cell原来需要那么大的开销的时候，它就会切到高性能去消化这个负载。不过往往这时候再提高CPU性能就已经晚了，就有很大几率会导致卡顿。</p>
+<blockquote>
+<p>1、当用户之前一直在看加载开销小的Cell的时候，其本身需要的CPU性能并不高，那么此时CPU性能调度管理器就更加倾向于保持低性能运行，这样能够省电。<br>2、当用户突然划到一个加载开销大的Cell的时候，CPU性能调度管理器也并不知道你这时候要加载一个开销那么大的Cell，于是它就还是在低性能的状态下去加载这个开销比较大的Cell。<br>3、当CPU性能调度器反应过来这个Cell原来需要那么大的开销的时候，它就会切到高性能去消化这个负载。不过往往这时候再提高CPU性能就已经晚了，就有很大几率会导致卡顿。</p>
+</blockquote>
 <p>这个过程往往会发生在Feed流类似的应用中。比如你之前一直在看的Cell都是文字内容的，开销极小。突然你划到视频Cell了，这个cell开销很大，CPU性能调度管理器在Cell加载到一半了才去提高性能等级，那就很容易出现卡顿的情况了。</p>
 <p>找到原因之后，优化的事情就好做了。现在苹果工程师打通了整个流程，使得UIKit的信息能够传递到CPU性能调度管理器。当UIKit在加载下一个Cell的时候，如果发现这是一个加载开销比较大的Cell，UIKit就会去通知CPU性能调度器，告诉调度器赶紧提高性能。这样一来，因为CPU性能已经提前提上来了，那么系统就能最大可能避免掉帧卡顿的情况发生。</p>
 <p>也就是说，之前CPU的调度情况是这样：</p>
@@ -425,16 +429,16 @@
 <p>当一个View包含了N个子View，且这N个子View的布局存在依赖的情况时。iOS 11下Auto Layout的计算耗时是随着子View的数量增加而指数性增长的。在iOS 12优化之后，计算耗时呈线性增长，这可以说是一个比较大的优化了。（但我一直是认为其实这本身就应该是一个线性时间内可以完成的任务，iOS 11的时候工程师怎么把它实现成指数性增长的了？这个工程师该杀），如下图：</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e023eda778536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
 <p>当N个View相互嵌套时，iOS 11下Auto Layout的计算耗时是随着子View的数量增加而指数性增长的。在iOS 12优化之后，计算耗时呈线性增长。我还是觉得这本身也是一个线性时间内可以完成的任务，当初在iOS 11把它实现成指数性增长任务的工程师该杀。如下图：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e02ad27985226?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e02ad27985226" alt=""></p>
 <p>更多的内容可以看<a href="https://developer.apple.com/videos/play/wwdc2018/220/" target="_blank" rel="noopener">Session 220 - High Performance Auto Layout</a></p>
 <h1 id="UIKit旧有API的修改"><a href="#UIKit旧有API的修改" class="headerlink" title="UIKit旧有API的修改"></a>UIKit旧有API的修改</h1><ul>
 <li>更Swift的UIKit</li>
 <li>更安全的编解码</li>
 </ul>
-<h4 id="更Swift的UIKit"><a href="#更Swift的UIKit" class="headerlink" title="更Swift的UIKit"></a>更Swift的UIKit</h4><p>在Swift 4.2中，有些全局的Type被挪进了对象中，包括但不限于：<br><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e0307c454e4f1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e02ff52899e0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
-<p>还有些全局常量也被挪进了有关对象中，包括但不限于：<br><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e0318cb0a22f5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e03208f30b963?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<h4 id="更Swift的UIKit"><a href="#更Swift的UIKit" class="headerlink" title="更Swift的UIKit"></a>更Swift的UIKit</h4><p>在Swift 4.2中，有些全局的Type被挪进了对象中，包括但不限于：<br><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e0307c454e4f1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e02ff52899e0a" alt=""></p>
+<p>还有些全局常量也被挪进了有关对象中，包括但不限于：<br><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e0318cb0a22f5" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e03208f30b963" alt=""></p>
 <p>这么一来，UIKit看起来确实更Swift了，只是升级4.2的时候，又要面对一堆编译错误了。</p>
 <h4 id="更安全的编解码"><a href="#更安全的编解码" class="headerlink" title="更安全的编解码"></a>更安全的编解码</h4><p>演讲者只是在这里提了一句，iOS 12提供了更安全的编解码API，旧的API将会被淘汰。具体是什么情况要去看<a href="https://developer.apple.com/videos/play/wwdc2018/222/" target="_blank" rel="noopener">Session 222 - Data You Can Trust</a></p>
 <h1 id="UIKit-新功能"><a href="#UIKit-新功能" class="headerlink" title="UIKit 新功能"></a>UIKit 新功能</h1><ul>
@@ -444,17 +448,26 @@
 <li>Siri Shortcuts</li>
 </ul>
 <h4 id="Notification-API修改"><a href="#Notification-API修改" class="headerlink" title="Notification API修改"></a>Notification API修改</h4><ul>
-<li>Interaction</li>
-</ul>
-<p>** iOS 12加强了针对Notification的交互，大部分界面开发者可以自由定制了。</p>
+<li><p>Interaction</p>
 <ul>
-<li>Grouping</li>
+<li>iOS 12加强了针对Notification的交互，大部分界面开发者可以自由定制了。</li>
 </ul>
-<p>** iOS 12会将众多Notification分组并展示，并且提供了API让开发者在一定程度上决定如何进行分组。</p>
+</li>
+</ul>
 <ul>
-<li>Settings</li>
+<li><p>Grouping</p>
+<ul>
+<li>iOS 12会将众多Notification分组并展示，并且提供了API让开发者在一定程度上决定如何进行分组。</li>
 </ul>
-<p>** iOS 12向开发者提供了接口，使得开发者能够让用户直接开启或关闭通知。</p>
+</li>
+</ul>
+<ul>
+<li><p>Settings</p>
+<ul>
+<li>iOS 12向开发者提供了接口，使得开发者能够让用户直接开启或关闭通知。</li>
+</ul>
+</li>
+</ul>
 <p>以上三点演讲者只是一带而过，更多内容请看：<br><a href="https://developer.apple.com/videos/play/wwdc2018/710/" target="_blank" rel="noopener">Session 710 - What’s New in User Notifications</a><br><a href="https://developer.apple.com/videos/play/wwdc2018/711/" target="_blank" rel="noopener">Session 711 - Using Grouped Notifications</a></p>
 <h4 id="Messages"><a href="#Messages" class="headerlink" title="Messages"></a>Messages</h4><p>iOS 12中，你可以将Message的人脸识别贴纸带入camera中。如果你需要针对这些做更多的定制的话，你需要在Info.Plist中添加以下内容，<strong>MSMessagesAppPresentationContextMedia</strong>其实就是指的camera：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>MSSupportedPresentationContexts<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>MSMessagesAppPresentationContextMessages<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>MSMessagesAppPresentationContextMedia<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>而且你也可以根据以下API查看一条Message是不是动态的：</p>
