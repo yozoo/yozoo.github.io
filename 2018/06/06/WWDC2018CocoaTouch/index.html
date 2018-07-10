@@ -89,18 +89,18 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dff9870e3851e">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffa8831d2a34">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffac8a973a34?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffae714927eb?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163e00ec5fe20536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163e0160670433a0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0211c57ac483?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e023eda778536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffac8a973a34">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163dffae714927eb">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163e00ec5fe20536">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163e0160670433a0">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0211c57ac483">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e023eda778536">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e02ad27985226">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0307c454e4f1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e02ff52899e0a">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e0318cb0a22f5">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/9/163e03208f30b963">
-<meta property="og:updated_time" content="2018-07-07T07:32:15.343Z">
+<meta property="og:updated_time" content="2018-07-07T07:35:57.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WWDC 2018：Cocoa Touch新特性与改进">
 <meta name="twitter:description" content="UIKit旧有功能的性能优化 滚动新增数据预获取功能 降低图片渲染不必要的内存开销 优化Auto Layout计算的时间复杂度  UIKit旧有功能的API调整 框架中旧的全局变量、常量以及函数被嵌套进对象，使得它们看上去更Swift 淘汰旧版本的编解码API，新增更安全的编解码API">
@@ -406,16 +406,16 @@
 <p>这个过程往往会发生在Feed流类似的应用中。比如你之前一直在看的Cell都是文字内容的，开销极小。突然你划到视频Cell了，这个cell开销很大，CPU性能调度管理器在Cell加载到一半了才去提高性能等级，那就很容易出现卡顿的情况了。</p>
 <p>找到原因之后，优化的事情就好做了。现在苹果工程师打通了整个流程，使得UIKit的信息能够传递到CPU性能调度管理器。当UIKit在加载下一个Cell的时候，如果发现这是一个加载开销比较大的Cell，UIKit就会去通知CPU性能调度器，告诉调度器赶紧提高性能。这样一来，因为CPU性能已经提前提上来了，那么系统就能最大可能避免掉帧卡顿的情况发生。</p>
 <p>也就是说，之前CPU的调度情况是这样：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dffac8a973a34?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dffac8a973a34" alt=""></p>
 <p>优化之后，CPU的调度就变成了这样：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dffae714927eb?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163dffae714927eb" alt=""></p>
 <p>因为UIKit预测到了下一个Cell开销比较大，所以提前跟CPU性能调度器打了招呼，于是CPU的性能就立刻提上来了。相比之前CPU性能慢慢往上提的情况，就更不容易出现卡顿。</p>
 <h4 id="图片渲染相关API的内存优化"><a href="#图片渲染相关API的内存优化" class="headerlink" title="图片渲染相关API的内存优化"></a>图片渲染相关API的内存优化</h4><p>演讲者先说了一遍内存是如何影响UI性能的，这一段其实可以说得很简单：当系统剩余内存不多，而此时你的应用又需要很大的一片内存时，系统就要通过回收内存或强行关闭后台App的方式来为你的应用腾出内存来。系统为你腾内存这一操作的开销导致了你的App此时需要更长时间的等待，进而影响了你App的UI性能。</p>
 <p>为了缓解这个问题，iOS 12引入了<strong>Automatic Backing Store</strong>这项技术。这项技术主要是针对画图类的App起作用，对于其他的场合无效。本质上的实现就是通过在保证色彩不失真的基础上，使用更少的数据量，去表达一个像素的颜色。</p>
 <p>如下图所示，在64位色的情况下，左右两张图片的数据量是一样的，都是2.2M左右。虽然右边只有黑白两色，但是依旧使用了64位去存储每个像素的颜色色值。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163e00ec5fe20536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163e00ec5fe20536" alt=""></p>
 <p>所以呢，苹果就想了个办法，说既然右边这张图片只有黑白两色，那我干嘛还要用64位去表达一个颜色呢？8位就足够了啊。于是，右边这个图每像素的颜色用8位来表达之后，就变成只有275K了，于是内存就省了：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163e0160670433a0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163e0160670433a0" alt=""></p>
 <p>那为什么不直接用1位呢？反正也就黑白两色。对不起，因为色表标准最小就是8位的，如果你用了1位色，屏幕是不支持这套标准的。<strong>Automatic Backing Store</strong>对左边这幅图无效，因为它不是图片压缩算法，它只是在你用画笔画完图片并且渲染的时候，把原来需要64位去存储的单个像素的色值，改成用8位去存储而已，这个过程是有可能产生一定的色彩失真的。所以<strong>Automatic Backing Store</strong>只适合画图类应用，在以下3个场景中，它是默认开启的：</p>
 <ul>
 <li>UIView.draw()</li>
@@ -425,9 +425,9 @@
 <p>有关<strong>Automatic Backing Store</strong>的内容，还可以看<a href="https://developer.apple.com/videos/play/wwdc2018/219/" target="_blank" rel="noopener">Session 219 - Image and Graphics Best Practices</a></p>
 <h4 id="Auto-Layout计算的优化"><a href="#Auto-Layout计算的优化" class="headerlink" title="Auto Layout计算的优化"></a>Auto Layout计算的优化</h4><p>iOS 12中，Auto Layout做了非常大的优化。</p>
 <p>当一个View包含了N个布局上互相独立的子View时，Auto Layout的计算耗时是随着子view数量的增加而线性增加的。因为苹果工程师们的努力，iOS 12的计算耗时比iOS 11少了一些，如下图：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e0211c57ac483?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e0211c57ac483" alt=""></p>
 <p>当一个View包含了N个子View，且这N个子View的布局存在依赖的情况时。iOS 11下Auto Layout的计算耗时是随着子View的数量增加而指数性增长的。在iOS 12优化之后，计算耗时呈线性增长，这可以说是一个比较大的优化了。（但我一直是认为其实这本身就应该是一个线性时间内可以完成的任务，iOS 11的时候工程师怎么把它实现成指数性增长的了？这个工程师该杀），如下图：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e023eda778536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e023eda778536" alt=""></p>
 <p>当N个View相互嵌套时，iOS 11下Auto Layout的计算耗时是随着子View的数量增加而指数性增长的。在iOS 12优化之后，计算耗时呈线性增长。我还是觉得这本身也是一个线性时间内可以完成的任务，当初在iOS 11把它实现成指数性增长任务的工程师该杀。如下图：</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e02ad27985226" alt=""></p>
 <p>更多的内容可以看<a href="https://developer.apple.com/videos/play/wwdc2018/220/" target="_blank" rel="noopener">Session 220 - High Performance Auto Layout</a></p>
@@ -621,7 +621,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

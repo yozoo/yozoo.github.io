@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="swift版本">
+<meta name="description" content="iOS 输入框的字数统计/最大长度限制对于 iOS 系统自带的键盘，有时候它在输入框中填入的是占位字符（已被高亮选中起来），等用户选中键盘上的候选词时，再替换为真正输入的字符，如下：">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UIView跳转到UIViewController">
-<meta property="og:url" content="http://yozoo.com.cn/2015/10/15/UIViewPush/index.html">
+<meta property="og:title" content="iOS 输入框长度限制">
+<meta property="og:url" content="http://yozoo.com.cn/2017/09/27/textfieldLong/index.html">
 <meta property="og:site_name" content="yozoo的博客">
-<meta property="og:description" content="swift版本">
+<meta property="og:description" content="iOS 输入框的字数统计/最大长度限制对于 iOS 系统自带的键盘，有时候它在输入框中填入的是占位字符（已被高亮选中起来），等用户选中键盘上的候选词时，再替换为真正输入的字符，如下：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-03-17T10:08:21.000Z">
+<meta property="og:image" content="https://github.com/iOS-Tips/iOS-tech-set/blob/master/images/2018/06/1-1.jpg">
+<meta property="og:updated_time" content="2018-07-10T12:33:38.098Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UIView跳转到UIViewController">
-<meta name="twitter:description" content="swift版本">
+<meta name="twitter:title" content="iOS 输入框长度限制">
+<meta name="twitter:description" content="iOS 输入框的字数统计/最大长度限制对于 iOS 系统自带的键盘，有时候它在输入框中填入的是占位字符（已被高亮选中起来），等用户选中键盘上的候选词时，再替换为真正输入的字符，如下：">
+<meta name="twitter:image" content="https://github.com/iOS-Tips/iOS-tech-set/blob/master/images/2018/06/1-1.jpg">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yozoo.com.cn/2015/10/15/UIViewPush/"/>
+  <link rel="canonical" href="http://yozoo.com.cn/2017/09/27/textfieldLong/"/>
 
 
 
 
 
-  <title>UIView跳转到UIViewController | yozoo的博客</title>
+  <title>iOS 输入框长度限制 | yozoo的博客</title>
   
 
 
@@ -262,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yozoo.com.cn/2015/10/15/UIViewPush/">
+    <link itemprop="mainEntityOfPage" href="http://yozoo.com.cn/2017/09/27/textfieldLong/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yozoo">
@@ -279,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">UIView跳转到UIViewController</h1>
+          <h1 class="post-title" itemprop="name headline">iOS 输入框长度限制</h1>
         
 
         <div class="post-meta">
@@ -291,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-15T16:53:28+08:00">
-                2015-10-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-27T00:00:00+08:00">
+                2017-09-27
               </time>
             
 
@@ -351,27 +354,16 @@
       
 
       
-        <p>swift版本</p>
+        <h1 id="iOS-输入框的字数统计-最大长度限制"><a href="#iOS-输入框的字数统计-最大长度限制" class="headerlink" title="iOS 输入框的字数统计/最大长度限制"></a>iOS 输入框的字数统计/最大长度限制</h1><p>对于 iOS 系统自带的键盘，有时候它在输入框中填入的是占位字符（已被高亮选中起来），等用户选中键盘上的候选词时，再替换为真正输入的字符，如下：</p>
 <a id="more"></a>
-<blockquote>
-<p>func whereViewControll() -&gt;UIViewController?{<br>        var next:UIView!<br>            for (next = self.superview; (next != nil); next = next.superview) {<br>                let nextResponder:UIResponder = next.nextResponder()!<br>                if nextResponder.isKindOfClass(UIViewController.self){<br>                    return nextResponder as?     UIViewController<br>                }<br>            }<br>        return nil<br>    }</p>
-</blockquote>
-<p>objective-c版本</p>
-<pre><code>- (UIViewController*)viewController {
-for (UIView* next = [self superview]; next; next = next.superview) {
-    UIResponder* nextResponder = [next nextResponder];
-    if ([nextResponder isKindOfClass:[UIViewController class]]) {
-        return (UIViewController*)nextResponder;
-    }
-}
-return nil;
-}
+<p><img src="https://github.com/iOS-Tips/iOS-tech-set/blob/master/images/2018/06/1-1.jpg" alt=""></p>
+<p>这会带来一个问题：比如输入框限定最多只能输入 10 位，当已经输入 9 个汉字的时候，使用系统拼音键盘则第 10 个字的拼音就打不了（因为剩余的 1 位无法输入完整的拼音）。</p>
+<p>怎么办呢？上面提到，输入框中的拼音会被高亮选中起来，所以我们可以根据 <code>UITextField</code> 的 <code>markedTextRange</code> 属性判断是否存在高亮字符，如果有则不进行字数统计和字符串截断操作。我们通过监听 <code>UIControlEventEditingChanged</code> 事件来对输入框内容的变化进行相应处理，如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.textField addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(textFieldDidChange:) forControlEvents:<span class="built_in">UIControlEventEditingChanged</span>];</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)textFieldDidChange:(<span class="built_in">UITextField</span> *)textField &#123;</span><br><span class="line"><span class="comment">// 判断是否存在高亮字符，如果有，则不进行字数统计和字符串截断</span></span><br><span class="line"><span class="built_in">UITextRange</span> *selectedRange = textField.markedTextRange;</span><br><span class="line"><span class="built_in">UITextPosition</span> *position = [textField positionFromPosition:selectedRange.start offset:<span class="number">0</span>];</span><br><span class="line"><span class="keyword">if</span> (position) &#123;</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// maxWowdLimit 为 0，不限制字数</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">self</span>.maxWowdLimit == <span class="number">0</span>) &#123;</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断是否超过最大字数限制，如果超过就截断</span></span><br><span class="line"><span class="keyword">if</span> (textField.text.length &gt; <span class="keyword">self</span>.maxWowdLimit) &#123;</span><br><span class="line">textField.text = [textField.text substringToIndex:<span class="keyword">self</span>.maxWowdLimit];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 剩余字数显示 UI 更新</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于 <code>UITextView</code> 的处理也是类似的。</p>
+<p>另外，对于“字数”的定义是很多种理解：在 Objective-C 中字符串 <code>NSString</code> 的长度 <code>length</code>，对于一个中文汉字和一个英文字母都是 1；但如果我们要按<strong>字节</strong>来统计和限制，同一字符在不同编码下所占的字节数也是不同的；另外有时我们要统计的是所输入文本的单词个数，而不是字符串的长度，所以我们需要根据不同的使用场景进行分析。</p>
 
-
-
-
-  [[self viewController].navigationController pushViewController:buyinglistController animated:YES];
-</code></pre>
       
     </div>
     
@@ -415,6 +407,12 @@ return nil;
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+        </div>
+      
 
       
       
@@ -424,8 +422,8 @@ return nil;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/12/win10/" rel="next" title="Windows 10滑动关机技巧">
-                <i class="fa fa-chevron-left"></i> Windows 10滑动关机技巧
+              <a href="/2017/07/27/tableviewsection/" rel="next" title="iOS 11中隐藏section头尾的实现">
+                <i class="fa fa-chevron-left"></i> iOS 11中隐藏section头尾的实现
               </a>
             
           </div>
@@ -434,8 +432,8 @@ return nil;
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/14/libswiftCore/" rel="prev" title="Xcode libswiftCore 报错处理方法">
-                Xcode libswiftCore 报错处理方法 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/20/iOS10navigation/" rel="prev" title="iOS 10 导航控制器的变化处理">
+                iOS 10 导航控制器的变化处理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -488,8 +486,17 @@ return nil;
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -595,6 +602,22 @@ return nil;
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS-输入框的字数统计-最大长度限制"><span class="nav-number">1.</span> <span class="nav-text">iOS 输入框的字数统计/最大长度限制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
