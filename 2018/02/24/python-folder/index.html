@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="iOS,Xcode,开发问题," />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一、什么是库？﻿库是共享程序代码的方式，一般分为静态库和动态库。﻿ 二、静态库与动态库的区别？﻿静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿ 动态库：链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存。">
-<meta name="keywords" content="iOS,Xcode,开发问题">
+<meta name="description" content="需要用到的python函数 读取文件夹 打开文件 读取文件内容 简单字符串处理  分析文件内容读取文件使用 open函数，第一个参数为文件全路径，第二个参数为读写标识，’r’表示只读">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS静态库、动态库的区别">
-<meta property="og:url" content="http://yozoo.com.cn/2017/11/02/framework/index.html">
+<meta property="og:title" content="Python 文件夹处理相关">
+<meta property="og:url" content="http://yozoo.com.cn/2018/02/24/python-folder/index.html">
 <meta property="og:site_name" content="yozoo的博客">
-<meta property="og:description" content="一、什么是库？﻿库是共享程序代码的方式，一般分为静态库和动态库。﻿ 二、静态库与动态库的区别？﻿静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿ 动态库：链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存。">
+<meta property="og:description" content="需要用到的python函数 读取文件夹 打开文件 读取文件内容 简单字符串处理  分析文件内容读取文件使用 open函数，第一个参数为文件全路径，第二个参数为读写标识，’r’表示只读">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-23T03:01:57.000Z">
+<meta property="og:updated_time" content="2018-07-11T01:01:04.785Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS静态库、动态库的区别">
-<meta name="twitter:description" content="一、什么是库？﻿库是共享程序代码的方式，一般分为静态库和动态库。﻿ 二、静态库与动态库的区别？﻿静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿ 动态库：链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存。">
+<meta name="twitter:title" content="Python 文件夹处理相关">
+<meta name="twitter:description" content="需要用到的python函数 读取文件夹 打开文件 读取文件内容 简单字符串处理  分析文件内容读取文件使用 open函数，第一个参数为文件全路径，第二个参数为读写标识，’r’表示只读">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yozoo.com.cn/2017/11/02/framework/"/>
+  <link rel="canonical" href="http://yozoo.com.cn/2018/02/24/python-folder/"/>
 
 
 
 
 
-  <title>iOS静态库、动态库的区别 | yozoo的博客</title>
+  <title>Python 文件夹处理相关 | yozoo的博客</title>
   
 
 
@@ -258,12 +258,12 @@
   
   
 
-  <article class="post post-type-iOS" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yozoo.com.cn/2017/11/02/framework/">
+    <link itemprop="mainEntityOfPage" href="http://yozoo.com.cn/2018/02/24/python-folder/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yozoo">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS静态库、动态库的区别</h1>
+          <h1 class="post-title" itemprop="name headline">Python 文件夹处理相关</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T15:20:09+08:00">
-                2017-11-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T00:00:00+08:00">
+                2018-02-24
               </time>
             
 
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -352,24 +352,23 @@
       
 
       
-        <h2 id="一、什么是库？"><a href="#一、什么是库？" class="headerlink" title="一、什么是库？﻿"></a>一、什么是库？﻿</h2><p>库是共享程序代码的方式，一般分为静态库和动态库。﻿</p>
-<h2 id="二、静态库与动态库的区别？"><a href="#二、静态库与动态库的区别？" class="headerlink" title="二、静态库与动态库的区别？﻿"></a>二、静态库与动态库的区别？﻿</h2><p>静态库：链接时完整地拷贝至可执行文件中，被多次使用就有多份冗余拷贝。﻿</p>
-<p>动态库：链接时不复制，程序运行时由系统动态加载到内存，供程序调用，系统只加载一次，多个程序共用，节省内存。﻿<br><a id="more"></a></p>
-<h2 id="三、iOS里静态库形式？"><a href="#三、iOS里静态库形式？" class="headerlink" title="三、iOS里静态库形式？﻿"></a>三、iOS里静态库形式？﻿</h2><p>.a和.framework﻿</p>
-<h2 id="四、iOS里动态库形式？"><a href="#四、iOS里动态库形式？" class="headerlink" title="四、iOS里动态库形式？﻿"></a>四、iOS里动态库形式？﻿</h2><p>.dylib和.framework﻿</p>
-<h2 id="五、framework为什么既是静态库又是动态库？"><a href="#五、framework为什么既是静态库又是动态库？" class="headerlink" title="五、framework为什么既是静态库又是动态库？﻿"></a>五、framework为什么既是静态库又是动态库？﻿</h2><p>系统的.framework是动态库，我们自己建立的.framework是静态库。﻿</p>
-<h2 id="六、a与-framework有什么区别？"><a href="#六、a与-framework有什么区别？" class="headerlink" title="六、a与.framework有什么区别？﻿"></a>六、a与.framework有什么区别？﻿</h2><p>.a是一个纯二进制文件，.framework中除了有二进制文件之外还有资源文件。﻿</p>
-<p>.a文件不能直接使用，至少要有.h文件配合，.framework文件可以直接使用。﻿</p>
-<p>.a + .h + sourceFile = .framework。﻿</p>
-<p>建议用.framework.﻿</p>
-<h2 id="七、为什么要使用静态库？"><a href="#七、为什么要使用静态库？" class="headerlink" title="七、为什么要使用静态库？﻿"></a>七、为什么要使用静态库？﻿</h2><p>方便共享代码，便于合理使用。﻿</p>
-<p>实现iOS程序的模块化。可以把固定的业务模块化成静态库。﻿</p>
-<p>和别人分享你的代码库，但不想让别人看到你代码的实现。﻿</p>
-<p>开发第三方sdk的需要。﻿</p>
-<h2 id="八、制作静态库时的几点注意："><a href="#八、制作静态库时的几点注意：" class="headerlink" title="八、制作静态库时的几点注意：﻿"></a>八、制作静态库时的几点注意：﻿</h2><p>1 注意理解：无论是.a静态库还.framework静态库，我们需要的都是二进制文件+.h+其它资源文件的形式，不同的是，.a本身就是二进制文件，需要我们自己配上.h和其它文件才能使用，而.framework本身已经包含了.h和其它文件，可以直接使用。﻿</p>
-<p>2 图片资源的处理：两种静态库，一般都是把图片文件单独的放在一个.bundle文件中，一般.bundle的名字和.a或.framework的名字相同。.bundle文件很好弄，新建一个文件夹，把它改名为.bundle就可以了，右键，显示包内容可以向其中添加图片资源。﻿</p>
-<p>3 category是我们实际开发项目中经常用到的，把category打成静态库是没有问题的，但是在用这个静态库的工程中，调用category中的方法时会有找不到该方法的运行时错误（selector not recognized），解决办法是：在使用静态库的工程中配置other linker flags的值为-ObjC。﻿</p>
-<p>4 如果一个静态库很复杂，需要暴露的.h比较多的话，就可以在静态库的内部创建一个.h文件（一般这个.h文件的名字和静态库的名字相同），然后把所有需要暴露出来的.h文件都集中放在这个.h文件中，而那些原本需要暴露的.h都不需要再暴露了，只需要把.h暴露出来就可以了。</p>
+        <h3 id="需要用到的python函数"><a href="#需要用到的python函数" class="headerlink" title="需要用到的python函数"></a>需要用到的python函数</h3><ul>
+<li>读取文件夹</li>
+<li>打开文件</li>
+<li>读取文件内容</li>
+<li>简单字符串处理</li>
+</ul>
+<h3 id="分析文件内容"><a href="#分析文件内容" class="headerlink" title="分析文件内容"></a>分析文件内容</h3><p>读取文件使用 open函数，第一个参数为文件全路径，第二个参数为读写标识，’r’表示只读<br><a id="more"></a></p>
+<p>file.readlines()函数直接把每一行读取出来，返回一个数组</p>
+<p>遍历数据时使用了 enumerate 函数，这样可以同时得到行号</p>
+<p>tuple是个好东西，简单的数据结构直接用 tuple 来实现，不需要新建一个数据结构或者对象了，函数返回一个 tuple 也可以让返回值变得更加丰富</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def parse_springmvcfile(filepath, filename):</span><br><span class="line">    request_mapping = []</span><br><span class="line">    <span class="built_in">file</span> = <span class="built_in">open</span>(filepath + <span class="string">"/"</span> + filename, <span class="string">"r"</span>)</span><br><span class="line">    is_spring_file = False</span><br><span class="line">    root_path = None</span><br><span class="line">    <span class="comment"># 一行一行的读取文件</span></span><br><span class="line">    <span class="keyword">for</span> linenum, <span class="built_in">line</span> <span class="keyword">in</span> enumerate(<span class="built_in">file</span>.readlines()):</span><br><span class="line">        <span class="keyword">if</span> is_spring_file:  <span class="comment"># 已经找到配置行说明该文件是 spring controller 文件</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">"@RequestMapping"</span> <span class="keyword">in</span> <span class="built_in">line</span>:  <span class="comment"># 找到 springmvc 路径配置行</span></span><br><span class="line">                <span class="keyword">if</span> root_path is None:</span><br><span class="line">                    root_path = get_cotroller_path(<span class="built_in">line</span>)  <span class="comment"># 根路径</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    request_mapping.append((linenum+<span class="number">1</span>,root_path + get_cotroller_path(<span class="built_in">line</span>)))  <span class="comment"># 解析路径字段</span></span><br><span class="line">        <span class="keyword">else</span>:  <span class="comment"># 还没找到配置行说明该文件是 spring controller 文件,别干其它的,继续找</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">"@Controller"</span> <span class="keyword">in</span> <span class="built_in">line</span>:</span><br><span class="line">                is_spring_file = True</span><br><span class="line">    <span class="literal">return</span> is_spring_file, request_mapping</span><br></pre></td></tr></table></figure>
+<h3 id="扫描文件夹"><a href="#扫描文件夹" class="headerlink" title="扫描文件夹"></a>扫描文件夹</h3><p>递归扫描文件夹，并将指定后缀的文件全路径放到数组中返回</p>
+<p>数组的并接使用 extend 函数，使用 append 函数向数组中添加元素</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def scanpath(filepath, suffix):</span><br><span class="line">    filelist = []</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"开始扫描【&#123;0&#125;】"</span>.<span class="built_in">format</span>(filepath))</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">os</span>.<span class="built_in">path</span>.isdir(filepath):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"【&#123;0&#125;】不是目录"</span>.<span class="built_in">format</span>(filepath))</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> <span class="built_in">os</span>.listdir(filepath):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">os</span>.<span class="built_in">path</span>.isdir(filepath + <span class="string">"/"</span> + filename):</span><br><span class="line">            filelist.extend(scanpath(filepath + <span class="string">"/"</span> + filename, suffix))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> filename.endswith(suffix):</span><br><span class="line">                filelist.append((filepath, filename))</span><br><span class="line">    <span class="keyword">return</span> filelist</span><br></pre></td></tr></table></figure>
+<h3 id="截取路径配置"><a href="#截取路径配置" class="headerlink" title="截取路径配置"></a>截取路径配置</h3><p>controller 里的路径是配置成@RequestMapping(“/路径”)，要把里面的路径取出来，需要对字符串进行处理。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def get_cotroller_path(request_mapping):</span><br><span class="line">   <span class="built_in"> group </span>= request_mapping.split(<span class="string">"\""</span>)</span><br><span class="line">    path = group[1]</span><br><span class="line">    <span class="keyword">if</span> path.endswith(<span class="string">"/"</span>):</span><br><span class="line">        path = path[:-1]</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> path.startswith(<span class="string">"/"</span>):</span><br><span class="line">        path = <span class="string">"/"</span> + path</span><br><span class="line">    return path</span><br></pre></td></tr></table></figure>
+<p>现在调用scanpath后使用parse_springmvcfile，就可以把所有controller 文件找到并显示里面所有的路径配置。</p>
 
       
     </div>
@@ -416,11 +415,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag"># iOS</a>
-          
-            <a href="/tags/Xcode/" rel="tag"># Xcode</a>
-          
-            <a href="/tags/开发问题/" rel="tag"># 开发问题</a>
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -433,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/20/iOS10navigation/" rel="next" title="iOS 10 导航控制器的变化处理">
-                <i class="fa fa-chevron-left"></i> iOS 10 导航控制器的变化处理
+              <a href="/2017/11/02/framework/" rel="next" title="iOS静态库、动态库的区别">
+                <i class="fa fa-chevron-left"></i> iOS静态库、动态库的区别
               </a>
             
           </div>
@@ -443,8 +438,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/24/python-folder/" rel="prev" title="Python 文件夹处理相关">
-                Python 文件夹处理相关 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/06/WWDC2018CocoaTouch/" rel="prev" title="WWDC 2018：Cocoa Touch新特性与改进">
+                WWDC 2018：Cocoa Touch新特性与改进 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -623,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是库？"><span class="nav-number">1.</span> <span class="nav-text">一、什么是库？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、静态库与动态库的区别？"><span class="nav-number">2.</span> <span class="nav-text">二、静态库与动态库的区别？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、iOS里静态库形式？"><span class="nav-number">3.</span> <span class="nav-text">三、iOS里静态库形式？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、iOS里动态库形式？"><span class="nav-number">4.</span> <span class="nav-text">四、iOS里动态库形式？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、framework为什么既是静态库又是动态库？"><span class="nav-number">5.</span> <span class="nav-text">五、framework为什么既是静态库又是动态库？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、a与-framework有什么区别？"><span class="nav-number">6.</span> <span class="nav-text">六、a与.framework有什么区别？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、为什么要使用静态库？"><span class="nav-number">7.</span> <span class="nav-text">七、为什么要使用静态库？﻿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、制作静态库时的几点注意："><span class="nav-number">8.</span> <span class="nav-text">八、制作静态库时的几点注意：﻿</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#需要用到的python函数"><span class="nav-number">1.</span> <span class="nav-text">需要用到的python函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析文件内容"><span class="nav-number">2.</span> <span class="nav-text">分析文件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扫描文件夹"><span class="nav-number">3.</span> <span class="nav-text">扫描文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#截取路径配置"><span class="nav-number">4.</span> <span class="nav-text">截取路径配置</span></a></li></ol></div>
             
 
           </div>
